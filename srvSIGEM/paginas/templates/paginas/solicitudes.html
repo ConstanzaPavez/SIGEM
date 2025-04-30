@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Solicitud de Equipo | CITT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .form-container {
+      background-color: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 700px;
+      margin: auto;
+    }
+  </style>
+</head>
+<body style="background-color: #89CFF0;">
+    <nav class="navbar navbar-expand-lg navbar-light custom-navbar shadow-sm">
+        <div class="container">
+        <a href="{% url 'inicio' %}" class="navbar-brand fw-bold">SIGEM</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link active" href="{% url 'control_vista_admin' %}">Control</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Solicitud</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Perfiles</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Inventario</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Lista</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Reporte</a></li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+  <!-- Formulario -->
+  <div class="container py-5">
+    <div class="form-container">
+      <h3 class="mb-4 text-center">Formulario de Solicitud</h3>
+
+      <form method="post">
+        <!-- {% csrf_token %} se usa cuando conecten el backend -->
+        
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre del equipo</label>
+          <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ej: Impresora 3D">
+        </div>
+
+        <div class="mb-3">
+          <label for="cantidad" class="form-label">Cantidad solicitada</label>
+          <input type="number" class="form-control" id="cantidad" name="cantidad" min="1">
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="entrada" class="form-label">Fecha de entrada</label>
+            <input type="date" class="form-control" id="entrada" name="entrada">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="salida" class="form-label">Fecha estimada de salida</label>
+            <input type="date" class="form-control" id="salida" name="salida">
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="responsable" class="form-label">Responsable</label>
+          <input type="text" class="form-control" id="responsable" name="responsable" placeholder="Ej: Juan Pérez">
+        </div>
+
+        <div class="mb-3">
+          <label for="danio" class="form-label">Tipo de daño (si aplica)</label>
+          <input type="text" class="form-control" id="danio" name="danio" placeholder="Ej: Pantalla agrietada">
+        </div>
+
+        <div class="mb-3">
+          <label for="comentarios" class="form-label">Comentarios adicionales</label>
+          <textarea class="form-control" id="comentarios" name="comentarios" rows="3" placeholder="Opcional"></textarea>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary btn-lg">Enviar solicitud</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+

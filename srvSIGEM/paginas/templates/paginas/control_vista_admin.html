@@ -1,0 +1,70 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Control de Solicitudes | CITT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link href="{% static 'paginas/css/estilo.css' %}" rel="stylesheet">
+</head>
+<body style="background-color: #89CFF0;">
+    <nav class="navbar navbar-expand-lg navbar-light custom-navbar shadow-sm">
+        <div class="container">
+        <a href="{% url 'inicio' %}" class="navbar-brand fw-bold">SIGEM</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link active" href="{% url 'control_vista_admin' %}">Control</a></li>
+            <li class="nav-item"><a class="nav-link"  href="{% url 'solicitudes_list' %}">Solicitud</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Perfiles</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Inventario</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Lista</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Reporte</a></li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+    <div class="container my-5">
+    <h2 class="mb-4 text-center">Control de Solicitudes</h2>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover align-middle shadow-sm">
+        <thead class="table-light text-center">
+          <tr>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Entrada</th>
+            <th>Salida</th>
+            <th>Daño</th>
+            <th>Responsable</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for solicitud in solicitudes %}
+          <tr>
+            <td>{{ solicitud.nombre }}</td>
+            <td class="text-center">{{ solicitud.cantidad }}</td>
+            <td class="text-center">{{ solicitud.fecha_entrada }}</td>
+            <td class="text-center">{{ solicitud.fecha_salida }}</td>
+            <td>{{ solicitud.tipo_dano }}</td>
+            <td>{{ solicitud.responsable }}</td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="6" class="text-center text-muted">No hay solicitudes registradas.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
