@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from paginas import views 
+from paginas import views  
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -28,8 +28,8 @@ urlpatterns = [
     # Inventario CRUD
     path('inventario/', views.inventario_list, name='inventario'),
     path('inventario/agregar/', views.agregar_articulo, name='agregar_articulo'),
-    path('inventario/editar/<int:pk>/', views.editar_articulo, name='editar_articulo'),
-    path('inventario/eliminar/<int:pk>/', views.eliminar_articulo, name='eliminar_articulo'),
+    path('inventario/editar/<int:pk>', views.editar_articulo, name='editar_articulo'),
+    path('inventario/eliminar/<int:pk>', views.eliminar_articulo, name='eliminar_articulo'),
     
     path('control_vista_admin/', views.control_solicitudes, name='control_vista_admin'),
     path('solicitudes/', views.solicitudes_list, name='solicitudes_list'),
