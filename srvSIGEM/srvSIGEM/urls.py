@@ -33,12 +33,19 @@ urlpatterns = [
     
     path('control_vista_admin/', views.control_solicitudes, name='control_vista_admin'),
     path('solicitudes/', views.solicitudes_list, name='solicitudes_list'),
+    
+    path('miembros/', views.lista_miembros, name='lista_miembros'),
+    path('miembros/agregar/', views.agregar_miembro, name='agregar_miembro'),
+    path('miembros/editar/<int:pk>/', views.editar_miembro, name='editar_miembro'),
+    path('miembros/eliminar/<int:pk>/', views.eliminar_miembro, name='eliminar_miembro'),
+    
+    path('reporte/', views.reporte_formulario, name='reporte_formulario'),
+    path('reporte/pdf/', views.generar_reporte_pdf, name='generar_reporte_pdf'),
 ]
 
 # Servir archivos estáticos y media en desarrollo
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
 
 
