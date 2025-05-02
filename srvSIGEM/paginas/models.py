@@ -25,3 +25,11 @@ class Solicitud(models.Model):
 
     def __str__(self):
         return f"{self.nombre} - {self.responsable}"
+
+class Miembro(models.Model):
+    nombre = models.CharField(max_length=100)
+    rol = models.CharField(max_length=100)
+    experiencia_previa = models.TextField()
+    imagen = models.ImageField(upload_to='miembros/', blank=True, null=True)
+
+
