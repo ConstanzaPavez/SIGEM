@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Control de Solicitudes | CITT</title>
+    <meta charset="UTF-8">
+    <title>Editar Miembro</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
@@ -22,48 +22,28 @@
             <li class="nav-item"><a class="nav-link active"  href="{% url 'solicitudes_list' %}">Solicitud</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Perfiles</a></li>
             <li class="nav-item"><a class="nav-link active" href="{% url 'inventario' %}">Inventario</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Lista</a></li>
+            <li class="nav-item"><a class="nav-link active" href="{% url 'lista_miembros' %}">Lista</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Reporte</a></li>
             </ul>
         </div>
         </div>
-    </nav>
+        </nav>
     <div class="container my-5">
-    <h2 class="mb-4 text-center">Control de Solicitudes</h2>
-
-    <div class="table-responsive">
-      <table class="table table-bordered table-hover align-middle shadow-sm">
-        <thead class="table-light text-center">
-          <tr>
-            <th>Nombre</th>
-            <th>Cantidad</th>
-            <th>Entrada</th>
-            <th>Salida</th>
-            <th>Daño</th>
-            <th>Responsable</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for solicitud in solicitudes %}
-          <tr>
-            <td>{{ solicitud.nombre }}</td>
-            <td class="text-center">{{ solicitud.cantidad }}</td>
-            <td class="text-center">{{ solicitud.fecha_entrada }}</td>
-            <td class="text-center">{{ solicitud.fecha_salida }}</td>
-            <td>{{ solicitud.tipo_dano }}</td>
-            <td>{{ solicitud.responsable }}</td>
-          </tr>
-          {% empty %}
-          <tr>
-            <td colspan="6" class="text-center text-muted">No hay solicitudes registradas.</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+        <h5>Editar Miembro: {{ miembro.nombre }}</h5>
+        </div>
+        <div class="card-body">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="d-flex justify-content-between">
+            <a href="{% url 'lista_miembros' %}" class="btn btn-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-success">Guardar Cambios</button>
+            </div>
+        </form>
+        </div>
+        </div>
     </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
